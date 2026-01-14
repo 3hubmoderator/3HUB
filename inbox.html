@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3Hub | الكيان الرقمي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #020617; color: white; margin: 0; padding: 0; overflow: hidden; }
+        
+        /* نظام الصفحات الكاملة المستقلة */
+        .page-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: #020617; display: none; overflow-y: auto;
+            padding: 80px 20px 100px; z-index: 10;
+        }
+        .page-container.active { display: block; animation: slideUp 0.4s ease-out; }
+        
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* الهيدر العلوي ثابت */
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        /* شريط التنقل السفلي ثابت */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; z-index: 1000; background: #0f172a; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-around; padding: 15px 0; }
+        
+        .nav-btn { flex: 1; text-align: center; color: #94a3b8; font-size: 11px; font-weight: bold; background: none; border: none; cursor: pointer; transition: 0.3s; }
+        .nav-btn i { font-size: 20px; display: block; margin-bottom: 4px; }
+        .nav-btn.active-link { color: #3b82f6; }
+
+        /* الأزرار العائمة */
+        .float-contact { position: fixed; bottom: 90px; left: 25px; z-index: 1100; display: flex; flex-direction: column; gap: 15px; }
+        .f-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: 0.3s; }
+        .f-btn:active { transform: scale(0.9); }
+
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 24px; padding: 25px; height: 100%; }
+        .hero-title { font-size: clamp(2rem, 8vw, 5rem); font-weight: 900; line-height: 1.1; italic: true; }
+    </style>
+</head>
+<body>
+
+    <nav class="px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="goTo('home')">
+            <div class="bg-blue-600 text-white px-3 py-1 rounded-lg font-black text-2xl shadow-lg">3</div>
+            <span class="text-2xl font-black uppercase">HUB</span>
+        </div>
+        <button onclick="goTo('offers')" class="bg-blue-600 px-5 py-2 rounded-full font-bold text-sm shadow-lg shadow-blue-600/30">احجز عرضك</button>
+    </nav>
+
+    <div class="float-contact">
+        <a href="https://wa.me/201206730127" class="f-btn bg-green-600"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/14Sq1bMFaNP/" class="f-btn bg-blue-700"><i class="fab fa-facebook-f text-xl"></i></a>
+    </div>
+
+    <section id="home" class="page-container active flex flex-col items-center justify-center text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="hero-title mb-8 bg-gradient-to-b from-white to-blue-500 bg-clip-text text-transparent italic">نحن المثلث..<br>الذي يحمي قمتك</h1>
+            <p class="text-slate-400 text-xl md:text-2xl mb-12 italic leading-relaxed">"مرحباً بك في 3Hub، حيث تتحول الإدارة الرقمية إلى فن، والأمان إلى واقع ملموس."</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="goTo('about')" class="bg-blue-600 px-10 py-4 rounded-2xl font-black text-lg">من نحن؟</button>
+                <button onclick="goTo('services')" class="bg-slate-800 px-10 py-4 rounded-2xl font-black text-lg">خدماتنا</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="page-container">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-black text-blue-500 mb-10 border-r-8 border-blue-600 pr-5 italic">من نحن؟</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card bg-blue-900/10 border-blue-500/20">
+                    <h3 class="text-2xl font-black mb-4 text-white">كيان رقمي متكامل</h3>
+                    <p class="text-slate-300 leading-relaxed text-lg">3Hub هي المنظومة التي تدمج ذكاء البيع مع حصانة التأمين. لا ندير صفحات فحسب، بل نبني علاقات ثقة مع جمهورك ونحمي استثماراتك الرقمية بأحدث الوسائل.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-blue-400 font-black mb-4 text-white">فلسفتنا</h3>
+                    <p class="text-slate-300 leading-relaxed text-lg">نؤمن أن سرعة الاستجابة هي مفتاح الربح. فريقنا مدرب على الرد في أقل من 60 ثانية، مع إتقان كامل لفنون الإقناع وإتمام الصفقات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="page-container">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black text-center mb-12 text-blue-500 italic">خدماتنا الاحترافية</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card text-center">
+                    <i class="fas fa-bolt text-5xl text-yellow-500 mb-6"></i>
+                    <h3 class="text-2xl font-black mb-4">الرد الخارق</h3>
+                    <p class="text-slate-400">استجابة فورية بأسلوب ذكي يحول كل استفسار إلى عملية بيع ناجحة في أسرع وقت.</p>
+                </div>
+                <div class="card text-center">
+                    <i class="fas fa-user-shield text-5xl text-blue-500 mb-6"></i>
+                    <h3 class="text-2xl font-black mb-4">التأمين الشامل</h3>
+                    <p class="text-slate-400">حماية تقنية ضد الاختراق، وفلترة آلية لمنع سرقة العملاء من التعليقات.</p>
+                </div>
+                <div class="card text-center">
+                    <i class="fas fa-chart-line text-5xl text-green-500 mb-6"></i>
+                    <h3 class="text-2xl font-black mb-4">تطوير المبيعات</h3>
+                    <p class="text-slate-400">تحليل البيانات وتقديم استراتيجيات لزيادة أرباح الصفحة ومتابعة العملاء المترددين.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="offers" class="page-container">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-black text-center mb-12 text-blue-400 italic">عروض الثقة 2026</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-red-600 to-red-900 p-10 rounded-[2rem] shadow-2xl flex flex-col justify-center">
+                    <h3 class="text-3xl font-black mb-2 italic">أسبوع الثقة</h3>
+                    <p class="text-xl font-bold mb-8">7 أيام إدارة وتأمين مجاناً تماماً.</p>
+                    <button onclick="window.location.href='https://wa.me/201206730127'" class="bg-white text-red-700 py-4 rounded-2xl font-black text-lg">اطلب تجربتك</button>
+                </div>
+                <div class="card border-2 border-blue-500 flex flex-col justify-center">
+                    <h3 class="text-2xl font-black text-blue-400 mb-2">باقة النمو الذهبية</h3>
+                    <p class="text-2xl font-bold text-white mb-2">10,000 ج.م شهرياً</p>
+                    <p class="text-slate-400 mb-8 text-sm">(عند التعاقد لمدة 3 شهور متتالية)</p>
+                    <button onclick="window.location.href='https://wa.me/201206730127'" class="bg-blue-600 py-4 rounded-2xl font-black text-lg">احجز الآن</button>
+                </div>
+            </div>
+            <div class="mt-8 card text-center border-dashed border-slate-700">
+                <p class="text-xl font-bold text-blue-400 italic">خصم 30% لأول 10 تعاقدات جديدة هذا الشهر!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contract" class="page-container">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white text-slate-900 p-10 md:p-16 rounded-[2.5rem] shadow-2xl relative">
+                <h2 class="text-3xl font-black text-center mb-10 border-b-2 border-slate-100 pb-5 text-blue-900">ميثاق التعاقد الرسمي</h2>
+                <div class="space-y-8 text-xl font-bold">
+                    <div class="flex gap-4 items-start">
+                        <i class="fas fa-lock text-blue-600 mt-1"></i>
+                        <p>بند السرية: حماية تامة وشاملة لبيانات عملك وأسرار عملائك.</p>
+                    </div>
+                    <div class="flex gap-4 items-start text-green-700">
+                        <i class="fas fa-star mt-1"></i>
+                        <p>بند التجربة: 7 أيام تجربة **مجانية تماماً** لتقييم الاحترافية.</p>
+                    </div>
+                    <div class="flex gap-4 items-start text-red-600 font-black italic">
+                        <i class="fas fa-credit-card mt-1"></i>
+                        <p>بند الدفع: يتم تحصيل قيمة الاشتراك شهرياً مقدماً فور انتهاء الفترة المجانية.</p>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <i class="fas fa-shield-alt text-blue-600 mt-1"></i>
+                        <p>بند الحماية: 3Hub مسؤولة تقنياً عن استقرار وأمان صفحتك.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-nav">
+        <button onclick="goTo('home')" class="nav-btn active-link" id="btn-home">
+            <i class="fas fa-home"></i>الرئيسية
+        </button>
+        <button onclick="goTo('about')" class="nav-btn" id="btn-about">
+            <i class="fas fa-fingerprint"></i>من نحن
+        </button>
+        <button onclick="goTo('services')" class="nav-btn" id="btn-services">
+            <i class="fas fa-shield-alt"></i>خدماتنا
+        </button>
+        <button onclick="goTo('offers')" class="nav-btn" id="btn-offers">
+            <i class="fas fa-fire"></i>العروض
+        </button>
+        <button onclick="goTo('contract')" class="nav-btn" id="btn-contract">
+            <i class="fas fa-file-contract"></i>العقد
+        </button>
+    </div>
+
+    <script>
+        function goTo(id) {
+            // إخفاء كل الأقسام
+            document.querySelectorAll('.page-container').forEach(p => p.classList.remove('active'));
+            // إظهار القسم المطلوب
+            const target = document.getElementById(id);
+            if(target) {
+                target.classList.add('active');
+                target.scrollTop = 0; // العودة للأعلى عند التبديل
+            }
+            
+            // تحديث حالة الأزرار في البار السفلي
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-link'));
+            const activeBtn = document.getElementById('btn-' + id);
+            if(activeBtn) activeBtn.classList.add('active-link');
+        }
+    </script>
+</body>
+</html>
